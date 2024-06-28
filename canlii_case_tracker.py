@@ -71,7 +71,7 @@ if not os.path.exists(os.path.join(BASE_DIR, 'daily_tracker')):
 # check if there is a tribunals csv file
 if not os.path.exists(os.path.join(BASE_DIR, 'tribunals.csv')):
     tribunals = api_caller.list_tribunals()
-    tribunals.to_csv(os.path.join(BASE_DIR, 'tribunals.csv'), index=False)
+    tribunals.to_csv(os.path.join(BASE_DIR, '/tribunals/tribunals.csv'), index=False)
     tribunals.to_csv(os.path.join(BASE_DIR, f'tribunals/list_history/tribunals_{today}.csv'), index=False)
     print('No tribunals file found. Created one.')
 else:
@@ -91,6 +91,7 @@ else:
         tribunals.to_csv(os.path.join(BASE_DIR, 'tribunals.csv'), index=False)
         tribunals.to_csv(os.path.join(BASE_DIR, f'tribunals/list_history/tribunals_{today}.csv'), index=False)
         print(f'Tribunal list updated. Old list had {number_of_tribunals} tribunals. New list has {number_of_today_tribunals} tribunals.')
+        send_notification(f'Tribunal list updated. Old list had {number_of_tribunals} tribunals. New list has {number_of_today_tribunals} tribunals.')
     else:
         print('Tribunal list is up to date.')
 
