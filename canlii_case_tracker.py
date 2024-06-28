@@ -69,14 +69,14 @@ if not os.path.exists(os.path.join(BASE_DIR, 'daily_tracker')):
     os.mkdir(os.path.join(BASE_DIR, 'daily_tracker'))
 
 # check if there is a tribunals csv file
-if not os.path.exists(os.path.join(BASE_DIR, 'tribunals.csv')):
+if not os.path.exists(os.path.join(BASE_DIR, 'tribunals/tribunals.csv')):
     tribunals = api_caller.list_tribunals()
-    tribunals.to_csv(os.path.join(BASE_DIR, '/tribunals/tribunals.csv'), index=False)
+    tribunals.to_csv(os.path.join(BASE_DIR, 'tribunals/tribunals.csv'), index=False)
     tribunals.to_csv(os.path.join(BASE_DIR, f'tribunals/list_history/tribunals_{today}.csv'), index=False)
     print('No tribunals file found. Created one.')
 else:
     # load the csv file
-    tribunals = pd.read_csv(os.path.join(BASE_DIR, 'tribunals.csv'))
+    tribunals = pd.read_csv(os.path.join(BASE_DIR, 'tribunals/tribunals.csv'))
     # get its size
     number_of_tribunals = tribunals.shape[0]
 
