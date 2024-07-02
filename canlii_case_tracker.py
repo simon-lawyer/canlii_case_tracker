@@ -161,11 +161,14 @@ for idx, row in tribunals.iterrows():
             print(f'Created caselist for {tribunal}, {jurisdiction}. It has {len(caselist)} cases.')
 
 daily_tracker = daily_tracker.fillna(0)
-daily_tracker.to_csv(os.path.join(BASE_DIR, f'daily_tracker_{today}.csv'), index=False)
+daily_tracker.to_csv(os.path.join(BASE_DIR, f'/daily_tracker/daily_tracker_{today}.csv'), index=False)
 
 # send the update message
 
-message = f"""Good morning,
+now = datetime.now()
+now_formatted = now.strftime('%Y-%m-%d %H:%M:%S')
+
+message = f"""It is now {now_formatted}.
 
 {int(daily_tracker['difference'].sum())} cases were added to CanLii.
 
