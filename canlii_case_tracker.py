@@ -65,8 +65,8 @@ if not os.path.exists(os.path.join(BASE_DIR, 'tribunals/list_history')):
     os.mkdir(os.path.join(BASE_DIR, 'tribunals/list_history'))
     
 # check if there is a daily tracker folder
-if not os.path.exists(os.path.join(BASE_DIR, 'daily_tracker')):
-    os.mkdir(os.path.join(BASE_DIR, 'daily_tracker'))
+if not os.path.exists(os.path.join(BASE_DIR, 'tribunals/daily_tracker')):
+    os.mkdir(os.path.join(BASE_DIR, 'tribunals/daily_tracker'))
 
 # check if there is a tribunals csv file
 if not os.path.exists(os.path.join(BASE_DIR, 'tribunals/tribunals.csv')):
@@ -161,7 +161,7 @@ for idx, row in tribunals.iterrows():
             print(f'Created caselist for {tribunal}, {jurisdiction}. It has {len(caselist)} cases.')
 
 daily_tracker = daily_tracker.fillna(0)
-daily_tracker.to_csv(os.path.join(BASE_DIR, f'/daily_tracker/daily_tracker_{today}.csv'), index=False)
+daily_tracker.to_csv(os.path.join(BASE_DIR, f'tribunals/daily_tracker/daily_tracker_{today}.csv'), index=False)
 
 # send the update message
 
